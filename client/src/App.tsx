@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
+
 import './App.css';
 
 const App: React.FC = () => {
@@ -8,7 +9,6 @@ const App: React.FC = () => {
 
   async function getPasswords() {
     const res = await axios.get('/api/passwords');
-    console.log(res.data);
     setPasswords(res.data);
   }
 
