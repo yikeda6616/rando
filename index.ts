@@ -1,6 +1,6 @@
 import * as express from 'express';
 import * as generatePassword from 'password-generator';
-const path = require('path');
+import * as path from 'path';
 
 const app = express();
 const PORT = process.env.PORT || 5000;
