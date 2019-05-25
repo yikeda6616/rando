@@ -1,17 +1,20 @@
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
+exports.__esModule = true;
 var express = require("express");
-var path = require("path");
 var generatePassword = require("password-generator");
+var path = require("path");
 var app = express();
 var PORT = process.env.PORT || 5000;
-app.use(express.static(path.join(__dirname, 'client/build')));
+// Serve static files from the React
+app.use(express.static(path.join(__dirname, '..', 'client/build')));
+// Put all API endpoints under '/api'
 app.get('/api/passwords', function (req, res) {
     var count = 5;
     // Generate some passwords
     var passwords = Array.from(Array(count).keys()).map(function (i) {
         return generatePassword(12, false);
     });
+    // Return them as json
     res.json(passwords);
     console.log("Sent " + count + " passwords");
 });
@@ -20,7 +23,7 @@ app.get('/api/passwords', function (req, res) {
  *
  */
 app.get('*', function (req, res) {
-    res.sendFile(path.join(__dirname + '/client/build/index.html'));
+    res.sendFile(path.join(__dirname, '..', '/client/build/index.html'));
 });
 app.listen(PORT);
 console.log("Password generator listening on " + PORT);
