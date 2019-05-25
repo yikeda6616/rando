@@ -1,12 +1,14 @@
 import * as express from 'express';
-import * as path from 'path';
 import * as generatePassword from 'password-generator';
+const path = require('path');
 
 const app = express();
 const PORT = process.env.PORT || 5000;
 
+// Serve static files from the React
 app.use(express.static(path.join(__dirname, 'client/build')));
 
+// Put all API endpoints under '/api'
 app.get('/api/passwords', (req, res) => {
   const count = 5;
 
@@ -15,6 +17,7 @@ app.get('/api/passwords', (req, res) => {
     generatePassword(12, false)
   );
 
+  // Return them as json
   res.json(passwords);
 
   console.log(`Sent ${count} passwords`);
