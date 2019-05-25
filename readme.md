@@ -13,9 +13,10 @@ URL: [https://hidden-anchorage-26252.herokuapp.com/](https://hidden-anchorage-26
 ## Backend
 
 - Node.js in TypeScript
+- Express server
 
 ## Frontend
 
 - React in TypeScript
-- React Hooks
-- Axios
+- React Hooks to change state
+- Axios to fetch data from API
